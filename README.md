@@ -31,8 +31,6 @@ initail test wallet with balance
 
 it will run a artela node at `http://127.0.0.1:8545`
 
-Copy Storage.sol in https://docs.artela.network/develop/guides/contract-via-aspect to contracts/Storage.sol
-
 compile smart contract
 
 ```
@@ -57,7 +55,7 @@ or
 yarn compile-aspect
 ```
 
-if you have error building the wasm file, please try:
+if you have error building the wasm file on windows, please try:
 
 ```
 npm run compile-as
@@ -130,15 +128,17 @@ setAspectContext response: true
 done
 ```
 
-## Commands
+## Commands 
 
 ```
+use --help flag for more information
+
 npx hardhat compile # compile solidity
 npx hardhat compile-aspect # compile the aspect, default aspect/index.ts
 npx hardhat deploy-aspect --joinpoints preContractCall --wasm build/index_debug.wasm # deploy the aspect
 npx hardhat create-account # create new account
 npx hardhat devnet # run local devnet
-npx hardhat setup # setup project directory for aspect
+npx hardhat setup # setup project directory for aspect in an existing project
 npx hardhat call --contract Storage --address $CONTRACT  --method getAspectContext --network artela  $ASPECT ToContract # call contract method
 npx hardhat get-balance --address 0x376b40c51E96AbCE9F00a2d7aAf6b6e5519a7898 # get balance of account address
 npx hardhat transfer --from  0x376b40c51E96AbCE9F00a2d7aAf6b6e5519a7898 --to 0xe5107dee9CcC8054210FF6129cE15Eaa5bbcB1c0 --amount 0.01 # transfer amount from one account to another
