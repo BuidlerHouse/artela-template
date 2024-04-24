@@ -1,5 +1,12 @@
 {
   "name": "hardhat-project",
+  "scripts": {
+    "compile": "hardhat compile",
+    "compile-aspect": "hardhat compile-aspect",
+    "compile-as": "asc aspect/index.ts --target debug -o build/index_debug.wasm",
+    "test": "hardhat test",
+    "deploy": "hardhat run scripts/deploy.js"
+  },
   "devDependencies": {
     "@nomicfoundation/hardhat-ethers": "^3.0.5",
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
@@ -8,7 +15,7 @@
   },
   "dependencies": {
     "@artela/aspect-libs": "^0.0.33",
-    "artela-hardhat-plugin": "^0.0.1",
+    "artela-hardhat-plugin": "^0.0.6",
     "assemblyscript": "^0.27.27",
     "dotenv": "^16.4.5"
   }

@@ -1,6 +1,7 @@
-## Guide 
-
 # Artela Template
+
+for Artela contract development, please follow the link below:
+[Artela Contract Development Guide](https://docs.artela.network/develop/guides/contract-via-aspect)
 
 ## Guide
 
@@ -21,8 +22,8 @@ npx hardhat devnet
 
 initail test wallet with balance
 
-| Address                                    | Private Key                                                  | Bech32 Acc                              |
-| ------------------------------------------ | ------------------------------------------------------------ | --------------------------------------- |
+| Address                                    | Private Key                                                        | Bech32 Acc                                 |
+| ------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------ |
 | 0x636B813875bFEEb5941089b07c18Cf6F31B27C55 | 0xd63ca10fae51e35945cb366d7601ea79d65e79aa176c82fbb3df2cfd8d58fcb5 | art1vd4czwr4hlhtt9qs3xc8cxx0ducmylz4sh4l5m |
 | 0xAdbc81cDb00a2461A5Ab70a3DF1401E0a79a1478 | 0x7b13c9f33b3b5663700297471733a88796fccc33b0da8e9b813f7a8422533304 | art14k7grndspgjxrfdtwz3a79qpuzne59rcg5y2vp |
 | 0xf0B2Ad824e98d5A3245A9E3c85dda71D513C37d1 | 0xc5e3059ac8e54e415e3d81831fc24f292f825ae3d2690bab97d3e3c80065046e | art17ze2mqjwnr26xfz6nc7gthd8r4gncd73a585zw |
@@ -35,18 +36,40 @@ Copy Storage.sol in https://docs.artela.network/develop/guides/contract-via-aspe
 compile smart contract
 
 ```
-npx hardhat compile
+npm run compile
 ```
 
-Copy index.ts in https://docs.artela.network/develop/guides/contract-via-aspect to aspect/index.ts
+or
+
+```
+yarn compile
+```
 
 compile aspect
 
 ```
-npx hardhat compile-aspect
+npm run compile-aspect
 ```
 
-Run the script
+or
+
+```
+yarn compile-aspect
+```
+
+if you have error building the wasm file, please try:
+
+```
+npm run compile-as
+```
+
+or
+
+```
+yarn compile-as
+```
+
+Run the deploy script
 
 ```
 # local devnet
@@ -54,6 +77,57 @@ npx hardhat run scripts/deploy.ts --network local
 
 # testnet
 npx hardhat run scripts/deploy.ts --network artela
+```
+
+example output:
+
+```
+$ npx hardhat run scripts/deploy.ts --network artela
+start deploy
+deployed contract 0x1d99888F86E4Cd5A5762dF5dF84CDa23F3dbac34
+from address:  0x376b40c51E96AbCE9F00a2d7aAf6b6e5519a7898
+deployAspect: sending signed transaction...
+receipt: {
+  blockHash: '0x323edd8ae5addac327c146571855320f1edd0900c4c3a3944d8adaef7ca2a961',
+  blockNumber: 6062762,
+  contractAddress: null,
+  cumulativeGasUsed: 140303,
+  from: '0x376b40c51e96abce9f00a2d7aaf6b6e5519a7898',
+  gasUsed: 9000000,
+  logs: [],
+  logsBloom: '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
+  status: true,
+  to: '0x0000000000000000000000000000000000a27e14',
+  transactionHash: '0x30dbac2a15523d294bbe24f95d954f88a49057fe7b6844236832a15009d70c45',
+  transactionIndex: 0,
+  type: '0x0',
+  aspectAddress: '0xA5e2fBe17dd3045Ae13A08cB023c514Ac89C29F4'
+}
+View the transaction on the explorer: https://betanet-scan.artela.network/tx/0x30dbac2a15523d294bbe24f95d954f88a49057fe7b6844236832a15009d70c45
+aspectID: 0xA5e2fBe17dd3045Ae13A08cB023c514Ac89C29F4
+bindAspect: sending signed transaction...
+receipt: {
+  blockHash: '0xcf1e1e74e607bab9135909116125f3fde37c8a1e3de42b5ae0f02c740af2ee09',
+  blockNumber: 6062764,
+  contractAddress: null,
+  cumulativeGasUsed: 0,
+  from: '0x376b40c51e96abce9f00a2d7aaf6b6e5519a7898',
+  gasUsed: 9000000,
+  logs: [],
+  logsBloom: '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
+  status: true,
+  to: '0x0000000000000000000000000000000000a27e14',
+  transactionHash: '0x7a0bf909a156e30f8bbc29ee673590e2c59baf154ea239507655b4903d21215a',
+  transactionIndex: 0,
+  type: '0x0'
+}
+View the transaction on the explorer: https://betanet-scan.artela.network/tx/0x7a0bf909a156e30f8bbc29ee673590e2c59baf154ea239507655b4903d21215a
+Aspect bind success
+deployed aspect 0xA5e2fBe17dd3045Ae13A08cB023c514Ac89C29F4 contract:  0x1d99888F86E4Cd5A5762dF5dF84CDa23F3dbac34
+Get the aspect context
+getAspectContext response: HelloWorld
+setAspectContext response: true
+done
 ```
 
 ## Commands
