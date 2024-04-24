@@ -1,0 +1,15 @@
+{
+  "name": "hardhat-project",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^3.0.5",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "ethers": "^6.12.0",
+    "hardhat": "^2.22.3"
+  },
+  "dependencies": {
+    "@artela/aspect-libs": "^0.0.33",
+    "artela-hardhat-plugin": "^0.0.1",
+    "assemblyscript": "^0.27.27",
+    "dotenv": "^16.4.5"
+  }
+}
