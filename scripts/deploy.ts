@@ -1,10 +1,12 @@
 const hre = require("hardhat");
 
 import {
+  JoinPoint,
   bindAspect,
   deployAspect,
   getBoundAddress,
   getBoundAspect,
+  AspectProperty,
 } from "artela-hardhat-plugin";
 
 async function testContract(contractAddress: string, aspectId: string) {
@@ -31,13 +33,20 @@ async function main() {
   await token.waitForDeployment();
   const contractAddress = await token.getAddress();
   console.log("deployed contract", contractAddress);
+
+  let properties: AspectProperty[] = [
+    { key: "FirstProperty", value: "FirstValue" },
+    { key: "SecondProperty", value: "SecondValue" },
+  ];
+
   const aspect = await deployAspect(
-    "[]",
-    ["preTxExecute", "postTxExecute"],
+    null, // if you are trying to pass properties, you can pass it here based on the above properties example
+    [JoinPoint.PreTxExecute, JoinPoint.PostTxExecute],
     "build/index_debug.wasm",
     "",
     network
   );
+
   const bind = await bindAspect(contractAddress, aspect, "9000000", network);
   console.log("deployed aspect", aspect, "contract: ", contractAddress);
   // const boundAddress = await getBoundAddress(aspect, network);
