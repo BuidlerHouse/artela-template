@@ -5,7 +5,7 @@ import {
   deployAspect,
   getBoundAddress,
   getBoundAspect,
-} from "artela-hardhat-plugin/dist/src/internal/aspect";
+} from "artela-hardhat-plugin";
 
 async function testContract(contractAddress: string, aspectId: string) {
   const Contract = await hre.ethers.getContractAt("Storage", contractAddress);
