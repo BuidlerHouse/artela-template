@@ -34,11 +34,6 @@ async function main() {
   const contractAddress = await token.getAddress();
   console.log("deployed contract", contractAddress);
 
-  let properties: AspectProperty[] = [
-    { key: "FirstProperty", value: "FirstValue" },
-    { key: "SecondProperty", value: "SecondValue" },
-  ];
-
   const aspect = await deployAspect(
     null, // if you are trying to pass properties, you can pass it here based on the above properties example
     [JoinPoint.PreTxExecute, JoinPoint.PostTxExecute],
