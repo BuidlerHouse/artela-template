@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@artela/aspect-libs": "^0.0.33",
-    "artela-hardhat-plugin": "^0.0.19",
+    "artela-hardhat-plugin": "^0.1.0",
     "assemblyscript": "^0.27.27",
     "dotenv": "^16.4.5"
   }
